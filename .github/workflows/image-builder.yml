@@ -12,6 +12,7 @@ jobs:
           url: http://192.168.1.19:8200
           tlsSkipVerify: true
           token: ${{ secrets.VAULT_TOKEN }}
+          namespace: Tech
           secrets: |
             secret/data/ci app_secret
       - name: Build Docker Image
