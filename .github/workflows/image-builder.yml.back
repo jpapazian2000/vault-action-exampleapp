@@ -1,22 +1,18 @@
-name: Import Secrets
+name: ImageBuilder
 # Run this workflow every time a new commit pushed to your repository
 on: push
 jobs:
   build:
     runs-on: self-hosted
-    permissions:
-      contents: read
-      id-token: write
     steps:
       - uses: actions/checkout@v2
       - name: Import Secrets
-        uses: hashicorp/vault-action@v2.4.0
+        uses: hashicorp/vault-action@v2.2.0
         with:
           url: http://10.0.0.3:8200
-          method: jwt
           tlsSkipVerify: true
+          token: ${{ secrets.VAULT_TOKEN }}
           namespace: Tech
-          role: demo
           secrets: |
             secret/data/ci app_secret
       - name: Build Docker Image
