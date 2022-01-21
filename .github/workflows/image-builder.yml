@@ -12,7 +12,7 @@ jobs:
       - name: Import Secrets
         uses: hashicorp/vault-action@v2.4.0
         with:
-          url: http://10.0.92.124:8200
+          url: http://10.0.0.3:8200
           method: jwt
           tlsSkipVerify: true
           namespace: Tech
